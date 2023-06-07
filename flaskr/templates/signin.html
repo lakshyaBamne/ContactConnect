@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block content %}
+    <h1>
+        Sign In
+    </h1>
+
+    <hr>
+
+    <div>
+        <form method="post" action="" novalidate>
+            {# this template variable helps to protect the form from CSRF attacks #}
+            {# all we need to do is to add this template variable and set the SECRET_KEY in app.config #}
+
+            {{ form.hidden_tag() }}
+
+
+            {# form fields that will be displayed on the form #}
+
+            {{ form.username.label }}
+            {{ form.username(size=20) }}
+
+            <br>
+
+            {{ form.password.label }}
+            {{ form.password(size=20) }}
+
+            <br>
+
+            {{ form.remember_me.label }}
+            {{ form.remember_me() }}
+
+            <br>
+
+            {{ form.submit.label }}
+            {{ form.submit() }}
+
+        </form>
+    </div>
+{% endblock %}
+
+

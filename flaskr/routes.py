@@ -2,7 +2,7 @@
 from flask import render_template, redirect, request, url_for
 
 from flaskr import app
-from flaskr.forms import SigninForm
+from flaskr.forms import SigninForm, SignupForm
 
 @app.route('/')
 @app.route('/index')
@@ -18,8 +18,18 @@ def signin():
     elif request.method == 'POST':
         return redirect(url_for('user_page', username=form.username.data))
     
+@app.route('/signup', methods=['GET', 'POST'])
+def signup():
+    form = SignupForm() # instantiating the form class defined in the forms module
+
+    if request.method == 'GET':
+        return render_template('signup.html', title='SIGN UP', form=form)
+    elif request.method == 'POST':
+        return redirect(url_for('user_page', username=form.username.data))
+
 
 @app.route('/userpage/<username>', methods=['GET', 'POST'])
 def user_page(username):
     if request.method == 'GET':
         return render_template('userpage.html', user=username)
+    

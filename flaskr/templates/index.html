@@ -12,8 +12,14 @@
     <hr>
 
     <div>
-        <a href="{{url_for('signin')}}">
+        <a href="{{ url_for('signin') }}">
             Sign In
+        </a>
+
+        <br>
+
+        <a href="{{ url_for('signup') }}">
+            Sign Up
         </a>
     </div>
 {% endblock %}

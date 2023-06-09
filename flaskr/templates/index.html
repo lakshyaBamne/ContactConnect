@@ -21,5 +21,29 @@
         <a href="{{ url_for('signup') }}">
             Sign Up
         </a>
+
+        <hr>
+
+        {# Now we add a table to list all the current users of the application for testing #}
+
+        <table>
+            <tr>
+                <th>Username</th>
+                <th>Full Name</th>
+                <th>Email</th>
+                <th>Contact Number</th>
+            </tr>
+
+            {% if users %}
+                {% for user in users %}
+                    <tr>
+                        <td>{{ user.username }}</td>
+                        <td>{{ user.name }}</td>
+                        <td>{{ user.email }}</td>
+                        <td>{{ user.contact }}</td>
+                    </tr>
+                {% endfor %}
+            {% endif %}
+        </table>
     </div>
 {% endblock %}

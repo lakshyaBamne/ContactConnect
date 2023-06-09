@@ -5,5 +5,65 @@
 {% endblock %}
 
 {% block content %}
-    Hello {{ user }}
+    <h1>
+        Hello {{ user }}
+    </h1>    
+
+    <hr>
+
+    <h2>
+        Add New Contact
+    </h2>
+
+    <div>
+        <form action="" method="POST" novalidate>
+            {{ form.hidden_tag() }}
+
+            {{ form.name.label }}
+            {{ form.name(size=128) }}
+
+            <br>
+
+            {{ form.email.label }}
+            {{ form.email(size=128) }}
+
+            <br>
+
+            {{ form.cno.label }}
+            {{ form.cno(size=20) }}
+
+            <br>
+
+            {{ form.submit.label }}
+            {{ form.submit() }}
+        </form>
+    </div>
+
+    <hr>
+
+    <h2>
+        Your contacts :- 
+    </h2>
+
+    <hr>
+
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Contact Number</th>
+        </tr>
+
+        {% if contacts %}
+            {% for contact in contacts %}
+                <tr>
+                    <td>{{contact.name}}</td>
+                    <td>{{contact.email}}</td>
+                    <td>{{contact.cno}}</td>
+                </tr>
+            {% endfor %}
+        {% endif %}
+    </table>
+
+    {# Now we list all the contacts that the user has stored #}
 {% endblock %}

@@ -1,5 +1,7 @@
 from flaskr import db
 
+from werkzeug.security import generate_password_hash, check_password_hash
+
 class User(db.Model):
     __tablename__ = "user"
     username = db.Column(db.String(64), primary_key=True)
@@ -10,6 +12,7 @@ class User(db.Model):
             string representation of the User Table
         """
         return f'<User {self.username}>'
+
     
 class UserData(db.Model):
     __tablename__ = "user_data"
